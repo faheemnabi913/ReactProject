@@ -1,5 +1,7 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
+ 
 import CustomImage from './CustomImage'
 
 export default class ContentContainer extends React.Component {
@@ -9,36 +11,37 @@ export default class ContentContainer extends React.Component {
                 <View style={styles.news}>
                     <CustomImage
                         imageSource={require('../../images/news.jpg')}
-                        headerText={'News'}
+                        headerText={<Text>{'News'}</Text>}
                     />
                 </View>
                 <View style={styles.videos}>
                     <CustomImage 
                         imageSource={require('../../images/videos.jpg')}
-                        headerText={'Videos'}
+                        headerText={<Text>{'Videos'}</Text>}
                     />
                 </View>
                 <View style={styles.music}>
                     <CustomImage 
-                        imageSource={require('../../images/music.jpg')}/>
-                        headerText={'Music'}
+                        imageSource={require('../../images/music.jpg')}
+                        headerText={<Text>{'Music'}</Text>}
+                    />
                 </View>
                 <View style={styles.movies}>
                     <CustomImage 
-                        imageSource={require('../../images/movies.jpg')}/>
-                        headerText={'Movies'}
+                        imageSource={require('../../images/movies.jpg')}
+                        headerText={<Text>{'Movies'}</Text>}
+                    />
                 </View>
                 <View style={styles.crypto}>
                     <CustomImage 
-                        imageSource={require('../../images/bitcoin.jpg')}/>
-                        headerText={'CryptoCurrency'}
-                        aboutInfo={'Current Rates'}
+                        imageSource={require('../../images/bitcoin.jpg')}
+                        headerText={<Text>{'CryptoCurrency'}</Text>}
+                    />
                 </View>
                 <View style={styles.petrol}>
                     <CustomImage 
                         imageSource={require('../../images/petrol.jpg')}
-                        headerText={'Petrol'}
-                        aboutInfo={"Latest Prices"}
+                        headerText={<Text>{'Petrol'}</Text>}
                     />
                 </View>
             </View>        
