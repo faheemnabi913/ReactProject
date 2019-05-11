@@ -1,5 +1,6 @@
 import React from 'react';
 import  { StyleSheet, ScrollView, ImageBackground, View } from 'react-native';
+
 import Header from '../../Header'
 import ContentContainer from './ContentContainer'
 

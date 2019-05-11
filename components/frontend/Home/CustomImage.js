@@ -8,9 +8,10 @@ export default class CustomImage extends React.Component {
             <ImageBackground
                 source = {this.props.imageSource}
                 style = {styles.image} 
-            ><ImageOverlay 
+            >
+                <ImageOverlay 
                     headerText = {this.props.headerText}
-                    aboutInfo = {this.props.aboutInfo}
+                    
                 />
             </ImageBackground>
 
