@@ -1,24 +1,42 @@
 import React from 'react';
-import YouTubePlayer from 'youtube-player';
+import {StyleSheet, View} from 'react-native'
+import { StackNavigator } from 'react-navigation'
+import Youtube from 'react-native-youtube'
 
-const PlayVideo = (id)=>{
+export default class PlayVideo extends React.Component{
+    static navigationOptions = {
+        headerTitle: 'Youtube',
+        headerStyle: {
+            backgroundColor: '#000'
+        },
+        headerTitleStyle: {
+            color: '#fff'
+        }
+    }
 
-    let player;
- 
-player = YouTubePlayer('video-player');
- 
-// 'loadVideoById' is queued until the player is ready to receive API calls.
-player.loadVideoById(id);
- 
-// 'playVideo' is queue until the player is ready to received API calls and after 'loadVideoById' has been called.
-player.playVideo();
- 
-// 'stopVideo' is queued after 'playVideo'.
-player
-    .stopVideo()
-    .then(() => {
-        // Every function returns a promise that is resolved after the target function has been executed.
-    });
+    render(){
+        return(
+            <View style={StyleSheet.container}>
+                <Youtube 
+                    videoId={this.props.navigation.state.params.youtubeId}
+                    play={true}
+                    fullscreen={true}
+                    loop={false}
+                    apiKey={"AIzaSyCQXmAB1Nc5ZI2C770jdmqY0tEYidUmauo"}
+                    onChangeState={ e => this.setState({status :e.state})}
+                    onChangeQuality={ e => this.setState({quality :e.quality})}
+                    onError={ e => this.setState({error :e.error})}
+                    style={{alignSelf: 'stretch', height: 300}}
+                />
+            </View>
+        )
+    }
 }
-
-export default PlayVideo;
+const styles = StyleSheet.create({
+    container : {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#fff'
+    }
+})
