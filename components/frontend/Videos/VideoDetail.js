@@ -2,38 +2,25 @@ import React from 'react';
 import {Text, View, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import VideoCard from './VideoCard';
 import CardSection from './CardSection';
-//import YouTubePlayer from 'youtube-player';
-import {StackNavigator} from 'react-navigation'
+import PlayVideo from './PlayVideo'
+import VideoList from './VideoList';
+
+//import 
+//import {StackNavigator} from 'react-navigation'
 
 
-// Creating Details
-const VideoDetail = ({video}) =>  {
-    const {snippet, id} = video;
+export default class VideoDetail extends React.Component  {
     
-    _onPress = (ide)=>{
-        let player;
-     
-    player = YouTubePlayer('video-player');
-     
-    player.loadVideoById(ide);
-     
-    player.playVideo();
-     
-    // 'stopVideo' is queued after 'playVideo'.
-    player
-        .stopVideo()
-        .then(() => {
-            // Every function returns a promise that is resolved after the target function has been executed.
-        });
-    }
-        
-    
-    
+    render(){
+        const {snippet, id} = this.props.video;
         return(
         
-        <TouchableOpacity  onPress ={this._onPress(id)}>
-            <VideoCard>
-            <CardSection>
+            <TouchableOpacity 
+            key={id}
+            onPress={() => this.props.navigation.navigate('PlayVideo', {youtubeId : id})}
+            >
+                <VideoCard>
+                    <CardSection>
                         <View style={styles.viewStyle}>
                             <Image
                                 style = {styles.imageStyle}
@@ -45,19 +32,20 @@ const VideoDetail = ({video}) =>  {
                             <Text>{snippet.channelTitle}</Text>
                         </View>
 
-                </CardSection>
-                  
-            
-        </VideoCard>
-        </TouchableOpacity>
+                    </CardSection>
+                    
+                
+                </VideoCard>
+            </TouchableOpacity>
         
          )
 
+    }
+    
+        
+
 }
 
-
-// exporting
-export default VideoDetail;
 
  const styles = StyleSheet.create({
      contentStyle :{
